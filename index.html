@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="bg-[#c7bff0] h-screen align-center flex items-center w-[100%]">
+    <div class="bg-[#d9d4f3] mx-auto w-[50%] h-[70%] rounded-xl text-center flex flex-col align-center justify-center gap-10 items-center ">
+        <h1 class="text-5xl font-bold">Even or Odd Checker </h1>
+        <input type="number" id="num" placeholder="Enter a number" class="px-6 py-2 border-0 rounded-xl bg-white w-[70%]">
+        <button onclick="checkNumber()" class="px-6 py-2 text-white  bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl">Check</button>
+        <h1 id="result" class="text-3xl font-bold"></h1>
+    </div>
+    </div>
+    
+    <div class=" bg-gradient-to-r from-blue-500 to-pink-500 h-screen align-center flex items-center  w-[100%]">
+        <div class="bg-white mx-auto w-[50%] h-[70%] rounded-xl  flex flex-col align-center justify-center gap-5 px-5 ">
+             <h1 class="text-5xl font-bold text-center ">Temperature Converter</h1>
+             <div class="grid grid-cols-2 gap-x-4">
+                <label for="fromUnit">From:</label>
+                <label for="toUnit">To:</label>
+                 <select name="fromUnit" id="fromUnit" class="p-2 border border-gray-300 rounded-xl text-grat-700 focus-outline-none" >
+                    <option value="C">Celsius (C)</option>
+                    <option value="F">Fahrenheit (F)</option>
+                    <option value="K">Kelvin (k)</option>
+                  
+                </select>
+                 <select name="toUnit" id="toUnit" class="p-2 border border-gray-300 rounded-xl text-grat-700 focus-outline-none" >
+                    <option value="F">Fahrenheit (F)</option>
+                    <option value="C">Celsius (C)</option>
+                    <option value="K">Kelvin (k)</option>
+                </select>
+             </div>
+             <div class="">
+                <label for="">Input Temperature</label><br>
+                <input id="value" type="number" class="p-2 border border-gray-300 rounded-xl text-grat-700 focus-outline-none w-full" required>
+             </div>
+             <div class="">
+                <label for="results">Result</label><br>
+                <p id="results" class="p-2 border border-gray-300 rounded-xl text-gray-700 focus-outline-none w-full">Result </p>
+             </div>
+             <div class="flex gap-4">
+                <button onclick="convertTemperature()" class="rounded-lg bg-[blue] text-white px-6 py-2">Convert</button>
+                <button onclick="clearTemp()" class="rounded-lg bg-[blue] text-white px-6 py-2">Clear</button>
+             </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        function checkNumber() {
+            let num = parseInt(document.getElementById('num').value)
+            let result = document.getElementById('result')
+            if (isNaN(num)) {
+                result.textContent = 'Enter a valid number'
+            } else if (num % 2 === 0) {
+                result.textContent =  num + ' is an even number'
+            }else {
+                result.textContent = num + ' is an odd number'
+            }
+
+
+        }
+       
+        
+       function convertTemperature() {
+    let value = parseFloat(document.getElementById('value').value);
+    let toUnit = document.getElementById('toUnit').value;
+    let fromUnit = document.getElementById('fromUnit').value;
+    let result = document.getElementById('result');
+
+    if (isNaN(value)) {
+        results.innerText = "Enter a valid number";
+        return;
+    }
+
+    if (fromUnit === toUnit) {
+        result.innerText = value;
+    } 
+    else if (fromUnit === 'C' && toUnit === 'F') {
+        results.innerText = (value * 9/5) + 32;
+    } 
+    else if (fromUnit === 'F' && toUnit === 'C') {
+        results.innerText = (value - 32) * 5/9;
+    } 
+    else if (fromUnit === 'C' && toUnit === 'K') {
+        results.innerText = value + 273.15;
+    } 
+    else if (fromUnit === 'K' && toUnit === 'C') {
+        results.innerText = value - 273.15;
+    } 
+    else if (fromUnit === 'F' && toUnit === 'K') {
+        results.innerText = (value - 32) * 5/9 + 273.15;
+    } 
+    else if (fromUnit === 'K' && toUnit === 'F') {
+        results.innerText = (value - 273.15) * 9/5 + 32;
+    }
+
+    
+}
+       function clearTemp() {
+          document.getElementById('value').value = ""
+          document.getElementById('result').value = ""
+       }
+    
+    
+    </script>
+</body>
+
+
+
+</html>
